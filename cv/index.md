@@ -5,7 +5,7 @@ permalink: /cv/
 ---
 
 <ul>
-  {% for post in site.posts %}
+  {% for post in site.cv %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a> — {{ post.date | date: "%b %-d, %Y" }}
     </li>
