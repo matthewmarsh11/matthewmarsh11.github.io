@@ -1,11 +1,10 @@
-title: Matthew Marsh
-email: matthewmarsh2001@icloud.com  
-description: >- # this means to ignore newlines until next blank line
-  Personal CV and blog website built with Jekyll and GitHub Pages.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://matthewmarsh11.github.io" # the base hostname & protocol for your site
-
+title: "Matthew Marsh"
+description: "Personal website and blog"
 theme: minima
 
-plugins:
-  - jekyll-feed
+header_pages:
+  - index.md
+  - cv/cv.md
+  - projects.md
+  - academic.md
+  - blog/index.md
