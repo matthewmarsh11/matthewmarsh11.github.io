@@ -33,8 +33,8 @@ Welcome to my personal website!
 **Imperial College London** – MEng Chemical Engineering (2020–2024)  
 - First class honours overall (73%)  
 - Electives: Advanced Process Optimisation, Machine Learning for Chemical Engineering, etc.  
-- Final year project: AI in Process Control, supervised by Dr. Maria Papathanasiou
-
+- Final year project: AI in Process Control
+  
 **Merchant Taylors' Boys School, Crosby** (2013–2020)  
 - A-Levels: Mathematics (A*), Further Maths (A*), Physics (A*), Chemistry (A*)  
 - GCSEs: Six grade 9s, best in school cohort
