@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "My CV"
+date:   2025-08-12 12:00:00 +0000
+categories: cv
+---
+
+
 ## Curriculum Vitae
 
 ### Education
