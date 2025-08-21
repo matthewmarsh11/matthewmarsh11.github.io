@@ -1,10 +1,10 @@
 title: "Matthew Marsh"
-description: "Personal website and blog"
+description: "personal website and blog"
 theme: minima
 
 header_pages:
   - index.md
-  - cv/cv.md
+  - _cv/cv.md
   - projects.md
   - academic.md
   - blog/index.md
