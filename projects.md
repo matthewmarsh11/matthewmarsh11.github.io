@@ -5,8 +5,7 @@ title: Projects
 
 # Projects
 
-## Using LSTM Networks for Stock Prediction
-Built an LSTM in PyTorch to forecast probability of S&P500 price rise by day’s end, with uncertainty estimation.
+## Automating FPL with AI and MPC
 
-## Statistical Techniques for Football Match Prediction
-Monte Carlo simulations with Expected Goals (xG) data; implemented KDE for win probability estimation.
+I can never be bothered doing my own transfers every week and keeping up with the Premier League all year. I wrote about how I used AI and MPC to automate it in a [blog post]({% post_url 2025-08-12-AI-Fantasy-Football-1 %}).
+The code will be available on my GitHub, here; once I have made it nicer to read and ensured I haven't made my passwords and APIs public.
