@@ -29,11 +29,6 @@ title: CV
 - Built Python tools for data analysis & Monte Carlo simulations  
 - Top mark in intern project competition
 
----
-
-## Projects
-- Using LSTM Networks for Stock Prediction  
-- Statistical Techniques for Football Match Prediction
 
 ---
 
