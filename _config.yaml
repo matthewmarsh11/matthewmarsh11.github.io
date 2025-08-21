@@ -8,3 +8,7 @@ header_pages:
   - projects.md
   - academic.md
   - blog/index.md
+
+collections:
+  cv:
+    output: false
