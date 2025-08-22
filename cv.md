@@ -4,17 +4,7 @@ title: CV
 permalink: /cv/
 ---
 
-<p><a href="{{ '/assets/cv.pdf' | relative_url }}" download>Download CV (PDF)</a></p>
-
-<object data="{{ '/assets/cv.pdf' | relative_url }}" type="application/pdf" width="100%" height="900px">
-  <p>Your browser can't display PDFs. Please download it
-     <a href="{{ '/assets/cv.pdf' | relative_url }}">here</a>.
-  </p>
-</object>
-
-<hr>
-
-## Markdown CV
+# CV
 
 {% assign md_cv = site.cv | first %}
 {% if md_cv %}
@@ -22,3 +12,24 @@ permalink: /cv/
 {% else %}
 <p>Markdown CV not found. Add one at <code>_cv/cv.md</code>.</p>
 {% endif %}
+
+<p>
+  <a href="{{ '/assets/matthew-marsh-cv.pdf' | relative_url }}" download class="download-button">
+    Here's a full PDF
+  </a>
+</p>
+
+<style>
+.download-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #007acc;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.download-button:hover {
+  background-color: #005fa3;
+}
+</style>

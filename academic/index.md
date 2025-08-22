@@ -3,12 +3,11 @@ layout: page
 title: Academic Work
 ---
 
-# Academic Work
 
-## Research Areas
+## Research Interests
 - Probabilistic Machine Learning
 - Uncertainty Quantification
 - Data-Driven Process Control
 
 ## Publications & Reports
-*(Add when available)*
+*TBC*

@@ -12,3 +12,5 @@ header_pages:
 collections:
   cv:
     output: false
+
+rss: false
