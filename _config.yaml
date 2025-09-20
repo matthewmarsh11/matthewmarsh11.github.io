@@ -14,3 +14,20 @@ collections:
     output: false
 
 rss: false
+
+disqus:
+  shortname: matthewmarsh11-github-io
+
+# Minima's expected variables
+minima:
+  social_links:
+    twitter_username: matthew_marsh11
+    github_username: matthewmarsh11
+    linkedin_username: matthew--marsh
+
+# Standard variables
+email: matthew.marsh20@imperial.ac.uk
+
+kramdown:
+  input: GFM
+  math_engine: mathjax

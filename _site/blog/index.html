@@ -18,7 +18,22 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","description":"personal website and blog","headline":"Blog","url":"http://localhost:4000/blog/"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Matthew Marsh" /></head>
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Matthew Marsh" /><!-- MathJax -->
+ 
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+
+
+</head>
+
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/">Matthew Marsh</a><nav class="site-nav">
@@ -41,6 +56,10 @@
 <ul>
   
     <li>
+      <a href="/blog/2025/09/15/AI-Fantasy-Football-2.html">Automating FPL with Machine Learning and MPC - Part 2: Optimisation and Control</a> — Sep 15, 2025
+    </li>
+  
+    <li>
       <a href="/blog/2025/08/21/AI-Fantasy-Football-1.html">Automating FPL with Machine Learning and MPC - Part 1: Machine Learning</a> — Aug 21, 2025
     </li>
   
@@ -57,25 +76,22 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">Matthew Marsh</h2>
-
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">Matthew Marsh</li></ul>
+        <ul class="contact-list"><li><a class="u-email" href="mailto:matthew.marsh20@imperial.ac.uk">matthew.marsh20@imperial.ac.uk</a></li></ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
-</div>
-
-      <div class="footer-col footer-col-3">
-        <p>personal website and blog</p>
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list"></ul>
       </div>
+
+
+      </div>
+
     </div>
 
   </div>
 
-</footer>
-</body>
+</footer></body>
 
 </html>

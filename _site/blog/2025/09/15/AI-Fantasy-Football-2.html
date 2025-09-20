@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Automating FPL with Machine Learning and MPC - Part 2: Optimisation and Control | Matthew Marsh</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Automating FPL with Machine Learning and MPC - Part 2: Optimisation and Control" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="personal website and blog" />
+<meta property="og:description" content="personal website and blog" />
+<link rel="canonical" href="http://localhost:4000/blog/2025/09/15/AI-Fantasy-Football-2.html" />
+<meta property="og:url" content="http://localhost:4000/blog/2025/09/15/AI-Fantasy-Football-2.html" />
+<meta property="og:site_name" content="Matthew Marsh" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-09-15T13:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Automating FPL with Machine Learning and MPC - Part 2: Optimisation and Control" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-09-15T13:00:00+01:00","datePublished":"2025-09-15T13:00:00+01:00","description":"personal website and blog","headline":"Automating FPL with Machine Learning and MPC - Part 2: Optimisation and Control","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2025/09/15/AI-Fantasy-Football-2.html"},"url":"http://localhost:4000/blog/2025/09/15/AI-Fantasy-Football-2.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Matthew Marsh" /><!-- MathJax -->
+ 
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+
+
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Matthew Marsh</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/projects.html">Projects</a><a class="page-link" href="/blog/">Blog</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Automating FPL with Machine Learning and MPC - Part 2: Optimisation and Control</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-09-15T13:00:00+01:00" itemprop="datePublished">Sep 15, 2025
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p style="text-align: center;">
+<img src="/assets/images/fpl-ml-2.jpg" alt="My Photo" style="width:60%; border-radius:12px; margin: 20px 0;" />
+</p>
+
+<p>Welcome back to part 2 of the blog post on how I am automating Fantasy Football this year. This probably marks the final technical blog post on my project, I will probably further update the blog further in the season, where we review some of the model’s performance - so far there has been some interesting choices (a weird obsession with Bowen and Gundogan), and I’ll try and explain the why, as well as the what with the progression of the season.</p>
+
+<p>Without further ado, here is how we utilised the model we built in part 1 within a control framework. This will probably get a little bit maths heavy, purely because I feel there are less explanations on the internet as to how to formulate these optimisation problems, whereas every man and his dog has done an explanation on how LSTMs work.</p>
+
+<hr />
+
+<h4 id="preventing-a-greedy-control-strategy"><strong>Preventing a Greedy Control Strategy</strong></h4>
+
+<hr />
+
+<p>In the first blog post, we briefly discussed training the model for longer time horizon predictions, to avoid taking ‘greedy’ options when utilising the control strategy. A greedy strategy would take the option that maximises expected points for that particular week. However fantasy football isn’t won in just one week (I hope, as I say sat rooted at the bottom of all the leagues I am in currently).</p>
+
+<p>We want our model to plan for the future over different game weeks. For example, if we had the choice between Bruno Fernandes and Martin Odegaard, who are similar players, with similar prices and over the course of a season might score similar points. If Bruno’s next fixtures were Sunderland (who you’d <em>imagine</em> Man Utd might beat), Man City and Everton - one easy game and two tough games, his predicted xP might be 8.32 from the first game, but then only a measly 1.32 and then -1.41 from the next two games (probably due Jordan Pickford having that blokes number from the penalty spot). Then if Odegaard was to face Burnley, Leeds and Wolves, where he is predicted xPs of 6.43, 7.34 and 4.56; Odegaard’s xP over the <em>horizon</em> is then the more attractive pick over Fernandes. However, there is no free lunch here: the further in the future we predict, the more complex and less accurate the model is with our current data.</p>
+
+<hr />
+
+<h4 id="the-initial-optimisation-problem"><strong>The Initial Optimisation Problem</strong></h4>
+
+<hr />
+
+<p>Picking our starting FPL squad is a relaxed optimisation problem compared to the receding horizon control problem (i.e. we have less constraints). This is because we don’t have any dynamic decisions to make, so the static optimisation doesn’t have to account for transition and decision making constraints.</p>
+
+<p>We first introduce a binary decision variable, $y_{i}$ - this is if 1 if player $i$ is picked, and 0 otherwise. Here $i$ is an index that covers the set of all players in the database which we will denote as $I$, so $i$ could be Cole Palmer, Harrison Armstrong or even Luis Diaz, who is for some reason still kicking about on the database.</p>
+
+<p>This then allows us to define our objective function over the set of $I$ players:</p>
+
+\[\max \sum_{i \in I} y_{i} c_{i} (\mu_{i, \text{xP}} - r \sigma_{i, \text{xP}})\]
+
+<p>Essentially, we sum over all the players, multiply each player by $c_{i}$, which is their chance of playing - this comes from the API and accounts for injuries, suspensions or if they are fuming they haven’t been granted a transfer (a là Wissa or Isak), and then multiply this by their mean xP, $\mu_{xP}$, whilst accounting for the variance of their predicted points $\sigma_{xP}$, to some perceived risk level $r$. In this problem I set $r$ to 0.5, but the higher the value of $r$, the less risk, as the more punished a higher variance in the xP is. The optimiser here essentially ‘switches on’ certain players, and evaluates the overall expression, and then decides which players to pick based on the value when they are switched on.</p>
+
+<p>We then have to satisfy constraints within our fantasy picks:</p>
+
+<p>Firstly, we have to pick exactly 15 players in the squad, so:</p>
+
+\[\sum_i^N y_i = 15\]
+
+<p>We also have constraints on the numbers of positions for each player. Firstly, we define the set of positions, 
+$P = { GK, DEF, MID, FW }$.</p>
+
+<p>We can then define the subset of each player for each position, 
+$I_p = { i \in I : \text{pos}(i) = p }$.</p>
+
+<p>For example, Marc Guehi would belong to $I_{\text{DEF}}$.</p>
+
+<p>Then, we have equality constraints for each position:
+$L_{GK} = 2, \; L_{DEF} = 5, \; L_{MID} = 5, \; L_{FW} = 3$</p>
+
+<p>Finally, we can define the constraint over the set of positions, whereas before it was defined over all players:</p>
+
+\[\sum_{i \in I_p} y_i = L_p \quad \forall p \in P\]
+
+<p>Similarly, we can define the set of clubs, 
+$C = { \text{Everton}, \text{Arsenal}, \cdots }$. 
+Again, we have the subset of players belonging to each team, $I_c = { i \in I : \text{club}(i) = c }$.</p>
+
+<p>As I write this, Marc Guehi <em>currently</em> belongs to $I_{\text{Crystal Palace}}$.</p>
+
+<p>As we can’t have more than 3 players from the same club, this is an inequality constraint:
+\(\sum_{i \in I_c} y_i \leq 3 \quad \forall c \in C\)</p>
+
+<p>We also have a constraint on the budget, which we define as a further inequality constraint:</p>
+
+\[\sum_{i \in I} y_i v_i \leq 100\]
+
+<p>Here, $v_i$ is the value of player $i$.</p>
+
+<p>When solving these optimisation problems, inequality constraints can either be <em>active</em> or <em>inactive</em>. Active means they are satisfied by equality, i.e. the cost of the squad is exactly 100, or we have exactly 3 Arsenal players in the squad. 
+The full optimisation problem can then be written as:</p>
+
+\[\begin{aligned}
+\max_{y_i \in \{0,1\}} \quad &amp; \sum_{i \in I} y_i \, c_i \left( \mu_{i,\text{xP}} - r \, \sigma_{i,\text{xP}} \right) \\[1em]
+\text{s.t.} \quad 
+&amp; \sum_{i \in I} y_i = 15 
+&amp;&amp; \text{(squad size)} \\[0.5em]
+&amp; \sum_{i \in I_p} y_i = L_p \quad \forall p \in P 
+&amp;&amp; \text{(position limits: }L_{GK}=2,\ L_{DEF}=5,\ L_{MID}=5,\ L_{FW}=3\text{)} \\[0.5em]
+&amp; \sum_{i \in I_c} y_i \leq 3 \quad \forall c \in C
+&amp;&amp; \text{(team limit)} \\[0.5em]
+&amp; \sum_{i \in I} y_i v_i \leq 100
+&amp;&amp; \text{(budget constraint)}
+\end{aligned}\]
+
+<p>This is all linear in our decision variables across the objective function and constraints, meaning this is an Integer Linear Program. This is a convex optimisation problem, which means all the solutions are globally optimal - i.e. our solver won’t get stuck trying to pick substandard players!</p>
+
+<p>We ended up with an initial squad of:</p>
+
+<ol>
+  <li>Jordan Pickford — Everton — Goalkeeper — £5.5</li>
+  <li>Ezri Konsa  — Aston Villa — Defender — £4.5</li>
+  <li>Rúben Dias — Man City — Defender — £5.5</li>
+  <li>Aaron Wan-Bissaka — West Ham — Defender — £4.5</li>
+  <li>Dan Burn — Newcastle — Defender — £5.0</li>
+  <li>Bruno Fernandes — Man Utd — Midfielder — £9.0</li>
+  <li>Bryan Mbeumo — Man Utd — Midfielder — £8.0</li>
+  <li>Mohamed Salah — Liverpool — Midfielder — £14.5</li>
+  <li>Sandro Tonali — Newcastle — Midfielder — £5.5</li>
+  <li>Jarrod Bowen — West Ham — Forward — £8.0</li>
+  <li>Raúl Jiménez — Fulham — Forward — £6.5</li>
+  <li>Nick Pope — Newcastle — Goalkeeper — £5.0</li>
+  <li>İlkay Gündoğan — Man City — Midfielder — £6.4</li>
+  <li>Reece James — Chelsea — Defender — £5.5</li>
+  <li>Jørgen Strand Larsen — Wolves — Forward — £6.5</li>
+</ol>
+
+<p>From this, we just picked the player with the highest predicted xP to be the captain (Bowen?!?!?!?), and then the top 11 players that fit into a squad as the starting XI. This seemed ok. Not what I would have chosen as my first choice, but my hypotheses for why this isn’t perfect will come, when I have given the model more of a chance!</p>
+
+<hr />
+
+<h4 id="receding-horizon-model-predictive-control"><strong>Receding Horizon Model Predictive Control</strong></h4>
+
+<hr />
+
+<p>Now we have an initial starting point, I then made the optimisation dynamic. Receding horizon predictive control is one type of MPC strategy. Here, we have a model (our ML model), which will predict $T$ timesteps into the future, and we use an optimisation problem to decide which decisions to make to maximise an objective function over that time horizon, subject to constraints on that horizon. We then re-solve this problem at every time step, where we make updates to the control strategy; whilst attempting to plan-ahead.</p>
+
+<p>When we make this dynamic, we have a few more decision variables - not just the players to pick. Firstly, our sets are not just defined over the set of players, $I$; but also the set of time horizons: $\mathcal{T} \in {t, \cdots,  T}$ - then the previous variable of the player being in the squad is also defined over time - i.e. $y_{i,t}$</p>
+
+<p>We then add more binary decision variables:</p>
+<ul>
+  <li>$z_{i,t}$, this is 1 if player $i$ is in the starting XI at time $t$, and 0 otherwise.</li>
+  <li>$c_{i,t}$, which is 1 if player $i$ is the captain at time $t$, and 0 otherwise.</li>
+  <li>$s_{i,t}$, this is 1 if player $i$ has been sold at time $t$, and 0 otherwise.</li>
+  <li>$b_{i,t}$, this is 1 if player $i$ has been bought at time $t$, and 0 otherwise.</li>
+</ul>
+
+<p>This allows us to define our objective function, just with a summation over the time horizon as well (accounting for also taking a points hit for transfers):</p>
+
+\[\max \sum_{t \in T} \sum_{i \in I} y_{i} c_{i} (\mu_{i,t, \text{xP}} - r \sigma_{i,t, \text{xP}}) - 4*p[t]\]
+
+<p>Unfortunately, this means we now need to add loads of constraints to ensure the model does what we want it to do.</p>
+
+<p>Firstly, the initial squad rule - i.e. at time 0, the indices of the selected players need to be the ones in our squad:</p>
+
+<p>$ y_{i, 0} = 1$ if player $i$ is in the squad, 0 otherwise</p>
+
+<p>We then need to define state transition rules - i.e. ensure there is continuity between the players depending on the actions to take each week.
+Firstly, the squad evolution constraint - i.e. the players in the squad at time t, must be the players in the squad at time t-1, minus the ones we sold and plus the ones we have bought:</p>
+
+\[y_{i, t} = y_{i, t-1} - s_{i,t} + b_{i, t}, \quad t&gt;0\]
+
+<p>The case at $t = 0$ is covered by the initial rule.</p>
+
+<p>Then the budget evolution rule - i.e your bank balance is the balance prior accounting for transfers:</p>
+
+\[\text{bank}_t = \text{bank}_{t-1} + v_i s_{i,t} - v_i b_{i,t}\]
+
+<p>Then have constraints on the transfers made:</p>
+
+\[\text{transfers_made}t = \sum{i \in I} b_{i,t}, \quad \forall t \in \mathcal{T}\]
+
+<p>With logic to try and reduce number of paid transfers:</p>
+
+\[\text{paid_transfers}_t \geq \text{transfers_made}_t - \text{free_transfers}_t, \quad \forall t \in \mathcal{T}\]
+
+<p>Constraint on the evolution of free transfers too</p>
+
+\[\text{free_transfers}t = 1 + \text{free_transfers}{t-1} - \text{transfers_made}_{t-1}, \quad t &gt; 0, \quad \text{with } \text{free_transfers}_t \leq 2\]
+
+<p>You have to buy and sell the same number of players - i.e. you can’t just buy one player and go over the squad limit.</p>
+
+\[\sum_{i \in I} s_{i,t} = \sum_{i \in I} b_{i,t}, \quad \forall t \in \mathcal{T}\]
+
+<p>Then more logic regarding transfers, i.e. you cannot buy a player who is already in your squad:</p>
+
+\[b_{i,t} + y_{i,t-1} \leq 1, \quad \forall i \in I, ; t &gt; 0\]
+
+<p>and can only sell players you currently own:</p>
+
+\[s_{i,t} \leq y_{i,t-1}, \quad \forall i \in I, ; t &gt; 0\]
+
+<p>Finally, the same constraints as the static problem are translated to the dynamic setting. At any time step, the squad must contain exactly 15 players:</p>
+
+\[\sum_{i \in I} y_{i,t} = 15, \quad \forall t \in \mathcal{T}\]
+
+<p>with the correct positions:</p>
+
+\[\sum_{i \in I_{\text{GK}}} y_{i,t} = 2, \quad
+\sum_{i \in I_{\text{DEF}}} y_{i,t} = 5, \quad
+\sum_{i \in I_{\text{MID}}} y_{i,t} = 5, \quad
+\sum_{i \in I_{\text{FWD}}} y_{i,t} = 3\]
+
+<p>and a team limit:</p>
+
+\[\sum_{i \in I_{k}} y_{i,t} \leq 3, \quad \forall k \in \text{Teams}, ; \forall t \in \mathcal{T}\]
+
+<p>As our model makes decisions on the captains and starting XI, we need to also define this. The starting XI must come from players within the squad:</p>
+
+\[z_{i,t} \leq y_{i,t}, \quad \forall i \in I, ; t \in \mathcal{T}\]
+
+<p>Must contain exactly 11 players:</p>
+
+\[\sum_{i \in I} z_{i,t} = 11, \quad \forall t \in \mathcal{T}\]
+
+<p>and again requires positions:</p>
+
+\[\sum_{i \in I_{\text{GK}}} z_{i,t} = 1, \quad
+\sum_{i \in I_{\text{DEF}}} z_{i,t} \geq 3, \quad
+\sum_{i \in I_{\text{FWD}}} z_{i,t} \geq 1\]
+
+<p>The captain must be in the starting XI:</p>
+
+\[c_{i,t} \leq z_{i,t}, \quad \forall i \in I, ; t \in \mathcal{T}\]
+
+<p>and can only pick one!</p>
+
+\[\sum_{i \in I} c_{i,t} = 1, \quad \forall t \in \mathcal{T}\]
+
+<p>This had lead us to a long final time-dependent optimisation problem - that I will not be retyping out. We solve this at every time step, to decide the transfers, starting XI and captain for the next week.</p>
+
+<hr />
+
+<h4 id="will-this-be-any-good"><strong>Will this be any good?</strong></h4>
+
+<hr />
+
+<p>So finally, do I think all the hours of time I put into building the model, control strategy and writing up how I did it will pay dividends in terms of beating everyone?
+Short answer: probably not.</p>
+
+<p>To quote a visiting student in our group, Joao, “MPC is only as good as your model” - and he’s right.</p>
+
+<p>Currently the model isn’t great. It doesn’t have too much data, and is pretty narrow minded in terms of its picks. Although I incorporated some pretty basic uncertainty, it is pretty much a deterministic model. When it is translating how good a given player <em>might be</em> in the Premier League, it just picks a random value. It would be better to make almost everything stochastic - and with that, it would require a lot more data, and a lot more compute. I will probably devote some more time to trying to do this - but I also have to evade all the bot detections; but it will be interesting to see how good I can get this - and maybe one day, I’ll be using it to make money on BJ88.html, or one of those other totally betting sites that sponsor Premier League teams (and probably have terribly priced odds!).</p>
+
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+  this.page.url = "http://localhost:4000/blog/2025/09/15/AI-Fantasy-Football-2.html";  // Canonical URL of the page
+  this.page.identifier = "/blog/2025/09/15/AI-Fantasy-Football-2"; // Unique identifier for the page
+};
+
+(function() { // DO NOT EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://https://matthewmarsh11-github-io.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  
+  </div><a class="u-url" href="/blog/2025/09/15/AI-Fantasy-Football-2.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list"><li><a class="u-email" href="mailto:matthew.marsh20@imperial.ac.uk">matthew.marsh20@imperial.ac.uk</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list"></ul>
+      </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer></body>
+
+</html>
