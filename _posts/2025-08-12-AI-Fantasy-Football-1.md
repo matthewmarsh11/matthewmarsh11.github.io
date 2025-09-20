@@ -3,6 +3,7 @@ layout: post
 title:  "Automating FPL with Machine Learning and MPC - Part 1: Machine Learning"
 date:   2025-08-21 12:00:00 +0000
 categories: blog
+comments: true
 ---
 
 <p style="text-align: center;">
@@ -87,7 +88,6 @@ After applying these factors, I also built a standard 3 layer Neural Network to 
 Developing my own player ratings and predictive metrics could be one route to improve the predictive accuracy, however this would be fundamentally limited by data. There are concepts, such as conditional expected threat, where the idea is to take a player such as Illiman Ndiaye, and work out how many goals would he assist, if he was to be playing the ball through to Haaland, rather than Dominic Calvert-Lewin, who is usually too busy tripping over his high heels to put the ball in the goal. However, even with all of the scraping in the world, there just isn't enough public access to high quality data to build a model like this (collab @opta?).
 
 ---
-
 
 I think this just about concludes the first part into what could be 2, could be a 3 part series on how I am trying to lose mates using ML and Fantasy Football. It might have been waffley, and in the future I might look back and think it was all badly written and useless, but lets see how well the model does this year. The next parts, I'll talk about applying this model within a Mixed Integer Linear Programming (MILP) framework to firstly build a static 'optimised' FPL team, and then how I developed it to use a full receding horizon control strategy, to dynamically make decisions on starting XI, captains and transfers for a full season.
 

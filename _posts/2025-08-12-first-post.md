@@ -11,9 +11,9 @@ I plan on using this website to document some (hopefully) interesting side proje
 
 Maybe one day I'll look back at how creative and keen I was as a first year PhD, but I imagine more likely will see how horrible my coding practise was and how it doesn't matter anymore as LLMs do everything now anyway.
 
-If anything I have written about seems interesting, feel free to email me:
-matthew.marsh20@imperial.ac.uk
-or add my linkedin:
-https://www.linkedin.com/in/matthew--marsh/
-or follow my twitter (or X or whatever it is called), where I mainly just repost about how depressing it is to support Everton:
-https://x.com/matthew_marsh11
+If anything I have written about seems interesting, feel free:
+
+- to email me [matthew.marsh20@imperial.ac.uk](mailto:matthew.marsh20@imperial.ac.uk)  
+- or add my [linkedin](https://www.linkedin.com/in/matthew--marsh/)
+- or follow my [twitter](https://x.com/matthew_marsh11)
+(or X or whatever it is called), where I mainly just repost about how depressing it is to support Everton.
