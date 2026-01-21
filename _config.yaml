@@ -1,33 +1,133 @@
+# Minimal Mistakes Theme Configuration
+theme: minimal-mistakes-jekyll
+minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+
+# Site Settings
+locale: "en-GB"
 title: "Matthew Marsh"
-description: "personal website and blog"
-theme: minima
+title_separator: "|"
+subtitle: ""
+name: "Matthew Marsh"
+description: "Personal website and blog - Probabilistic ML, Process Systems, Sports Analytics"
+url: "https://matthewmarsh11.github.io"
+baseurl: ""
+repository: "matthewmarsh11/matthewmarsh11.github.io"
 
-header_pages:
-  - index.md
-  - _cv/cv.md
-  - projects.md
-  - academic.md
-  - blog/index.md
+# Site Author
+author:
+  name: "Matthew Marsh"
+  avatar: "/assets/matthew-marsh.jpg"
+  bio: "PhD Student at Imperial College London. Researching Probabilistic Machine Learning for Process Systems."
+  location: "London, UK"
+  email: "matthew.marsh20@imperial.ac.uk"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/matthewmarsh11"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/matthew_marsh11"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/matthew--marsh"
 
-collections:
-  cv:
-    output: false
+# Site Footer
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/matthewmarsh11"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/matthew_marsh11"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/matthew--marsh"
 
-rss: false
+# Reading Files
+include:
+  - _pages
 
-disqus:
-  shortname: matthewmarsh11-github-io
+# Build Settings
+markdown: kramdown
+remote_theme: # leave blank when using gem
+highlighter: rouge
 
-# Minima's expected variables
-minima:
-  social_links:
-    twitter_username: matthew_marsh11
-    github_username: matthewmarsh11
-    linkedin_username: matthew--marsh
+# Pagination
+paginate: 10
+paginate_path: /blog/page:num/
 
-# Standard variables
-email: matthew.marsh20@imperial.ac.uk
+# Disable feed
+atom_feed:
+  hide: true
 
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-include-cache
+
+# Archives
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+# Defaults
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+      toc: true
+      toc_sticky: true
+  # _pages
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+
+# Comments (Giscus - GitHub Discussions based)
+comments:
+  provider: "giscus"
+  giscus:
+    repo: "matthewmarsh11/matthewmarsh11.github.io"
+    repo_id: "R_kgDOPctlRA"
+    category_name: "Announcements"
+    category_id: "DIC_kwDOPctlRM4CuhAY"
+    mapping: "pathname"
+    strict: "0"
+    reactions_enabled: "1"
+    emit_metadata: "0"
+    input_position: "bottom"
+    theme: "preferred_color_scheme"
+    lang: "en"
+
+# Analytics (optional)
+# analytics:
+#   provider: "google"
+#   google:
+#     tracking_id: ""
+
+# Kramdown
 kramdown:
   input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
   math_engine: mathjax

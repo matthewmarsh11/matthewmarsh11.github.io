@@ -1,0 +1,123 @@
+---
+layout: single
+author_profile: false
+classes: wide
+---
+
+<style>
+.home-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+.home-intro img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+.home-intro h2 {
+  margin-bottom: 0.25rem;
+  font-size: 1.75rem;
+}
+.home-intro .subtitle {
+  color: #999;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.home-intro .bio {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.social-links a {
+  color: #999;
+  font-size: 1.5rem;
+  transition: color 0.2s;
+}
+.social-links a:hover {
+  color: #f2a900;
+}
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+.quick-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem 1rem;
+  border: 1px solid #333;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+.quick-link:hover {
+  border-color: #f2a900;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.quick-link .icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.quick-link .label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.quick-link .desc {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+</style>
+
+<div class="home-intro">
+  <img src="/assets/matthew-marsh.jpg" alt="Matthew Marsh">
+  <h2>Matthew Marsh</h2>
+  <p class="subtitle">Personal Website</p>
+  <p class="bio">
+    PhD student at <strong>Imperial College London</strong> researching Probabilistic Machine Learning
+    for Process Systems. I like applying maths and ML to real-world problems like sports analytics and finance.
+  </p>
+  <div class="social-links">
+    <a href="https://github.com/matthewmarsh11" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://twitter.com/matthew_marsh11" title="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://linkedin.com/in/matthew--marsh" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:matthew.marsh20@imperial.ac.uk" title="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+</div>
+
+<div class="quick-links">
+  <a href="/blog/" class="quick-link">
+    <span class="icon">&#128221;</span>
+    <span class="label">Blog</span>
+    <span class="desc">Thoughts & write-ups</span>
+  </a>
+  <a href="/projects/" class="quick-link">
+    <span class="icon">&#128736;</span>
+    <span class="label">Projects</span>
+    <span class="desc">Side projects</span>
+  </a>
+  <a href="/academic/" class="quick-link">
+    <span class="icon">&#128218;</span>
+    <span class="label">Academic</span>
+    <span class="desc">Research</span>
+  </a>
+  <a href="/cv/" class="quick-link">
+    <span class="icon">&#128196;</span>
+    <span class="label">CV</span>
+    <span class="desc">Experience</span>
+  </a>
+</div>

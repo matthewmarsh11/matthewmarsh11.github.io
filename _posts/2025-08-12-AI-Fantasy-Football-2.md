@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "Automating FPL with Machine Learning and MPC - Part 2: Optimisation and Control"
 date:   2025-09-15 12:00:00 +0000
-categories: blog
+categories: technical
 ---
 
 <p style="text-align: center;">

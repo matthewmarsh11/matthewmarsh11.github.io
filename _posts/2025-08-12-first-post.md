@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "Helllloooo"
 date:   2025-08-18 12:00:00 +0000
-categories: blog
+categories: general
 ---
 
 Welcome to my website and blog!

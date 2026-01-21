@@ -1,25 +1,125 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Matthew Marsh | personal website and blog</title>
-<meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Matthew Marsh" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="personal website and blog" />
-<meta property="og:description" content="personal website and blog" />
-<link rel="canonical" href="http://localhost:4000/" />
-<meta property="og:url" content="http://localhost:4000/" />
-<meta property="og:site_name" content="Matthew Marsh" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Matthew Marsh" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"personal website and blog","headline":"Matthew Marsh","name":"Matthew Marsh","url":"http://localhost:4000/"}</script>
-<!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Matthew Marsh" /><!-- MathJax -->
- 
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Matthew Marsh</title>
+<meta name="description" content="Personal website and blog - Probabilistic ML, Process Systems, Sports Analytics">
+
+
+  <meta name="author" content="Matthew Marsh">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Matthew Marsh">
+<meta property="og:title" content="Matthew Marsh">
+<meta property="og:url" content="http://localhost:4000/">
+
+
+  <meta property="og:description" content="Personal website and blog - Probabilistic ML, Process Systems, Sports Analytics">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/">
+
+
+
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+    "name": "Matthew Marsh",
+    "url": "http://localhost:4000/"
+}
+</script>
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- Computer Modern (LaTeX) Font -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
+
+<style>
+  /* Override fonts with CMU Bright (LaTeX sans-serif) */
+  body,
+  .page__content,
+  .archive__item-excerpt,
+  .page__meta {
+    font-family: 'Computer Modern Bright', 'CMU Bright', 'Latin Modern Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .page__title,
+  .archive__item-title,
+  .site-title {
+    font-family: 'Computer Modern Bright', 'CMU Bright', 'Latin Modern Sans', 'Helvetica Neue', sans-serif !important;
+  }
+
+  code, pre, .highlight {
+    font-family: 'Computer Modern Typewriter', 'Courier New', monospace !important;
+  }
+
+  /* Better typography */
+  .page__content {
+    font-size: 1.05em;
+    line-height: 1.75;
+  }
+
+  /* Nicer blockquotes */
+  blockquote {
+    font-style: italic;
+    border-left: 4px solid #f2a900;
+  }
+
+  /* Rectangular avatar (not oval) */
+  .author__avatar img {
+    border-radius: 10px !important;
+  }
+</style>
+
+<!-- MathJax for equations -->
 <script>
   MathJax = {
     tex: {
@@ -29,110 +129,299 @@
     svg: { fontCache: 'global' }
   };
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
+  </head>
 
-</head>
+  <body class="layout--single wide" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
-<body><header class="site-header" role="banner">
+    
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">Matthew Marsh</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
-
-        <div class="trigger"><a class="page-link" href="/projects.html">Projects</a><a class="page-link" href="/blog/">Blog</a></div>
-      </nav></div>
-</header>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <div class="home"><style>
-  .intro { display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
-  .intro-photo { width: 140px; border-radius: 8px; object-fit: cover; } /* set to 0 for sharp corners */
-  .intro-text { flex: 1; min-width: 260px; }
-</style>
-
-<div class="intro">
-  <img src="/assets/matthew-marsh.jpg" alt="Matthew Marsh" class="intro-photo" />
-  <div class="intro-text">
-
-<div class="intro-text">
-  <p>
-    I'm a PhD student within both the 
-    <a href="https://www.optimlpse.co.uk/">Optimisation and Machine Learning for Process Systems Engineering Group (OptiML PSE)</a> 
-    and Optimisation Methods for Green Applications (OMEGA) groups at Imperial College London.
-  </p>
-
-  <p>
-    I research Probabilistic Machine Learning, where I develop new algorithms and methods for modelling and controlling Process Systems under uncertainty and subject to constraint satisfaction.
-  </p>
-
-  <p>
-    I like the application of mathematical and ML modelling and methods to real world problems such as sports, finance, and more. Read my posts and projects below 👇
-  </p>
-</div>
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Matthew Marsh
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/about/"
+                
+                
+              >About</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/blog/"
+                
+                
+              >Blog</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/projects/"
+                
+                
+              >Projects</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/academic/"
+                
+                
+              >Academic</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/cv/"
+                
+                
+              >CV</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
   </div>
 </div>
 
-<h2 id="quick-links">Quick Links</h2>
-<ul>
-  <li><a href="/cv/">CV</a></li>
-  <li><a href="/projects">Projects</a></li>
-  <li><a href="/academic">Academic Work</a></li>
-  <li><a href="/blog">Blog</a></li>
-</ul>
 
-<h2 id="contacts">Contacts</h2>
-<ul>
-  <li>Emails: <a href="mailto:matthewmarsh2001@icloud.com">matthewmarsh2001@icloud.com</a></li>
-  <li>LinkedIn: <a href="https://linkedin.com/in/matthew--marsh">linkedin.com/in/matthew–marsh</a></li>
-  <li>GitHub: <a href="https://github.com/matthewmarsh11">github.com/matthewmarsh11</a></li>
-</ul>
-<h2 class="post-list-heading">Posts</h2>
-    <ul class="post-list"><li><span class="post-meta">Sep 15, 2025</span>
-        <h3>
-          <a class="post-link" href="/blog/2025/09/15/AI-Fantasy-Football-2.html">
-            Automating FPL with Machine Learning and MPC - Part 2: Optimisation and Control
-          </a>
-        </h3></li><li><span class="post-meta">Aug 21, 2025</span>
-        <h3>
-          <a class="post-link" href="/blog/2025/08/21/AI-Fantasy-Football-1.html">
-            Automating FPL with Machine Learning and MPC - Part 1: Machine Learning
-          </a>
-        </h3></li><li><span class="post-meta">Aug 18, 2025</span>
-        <h3>
-          <a class="post-link" href="/blog/2025/08/18/first-post.html">
-            Helllloooo
-          </a>
-        </h3></li></ul></div>
-
-      </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
-
-  <div class="wrapper">
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list"><li><a class="u-email" href="mailto:matthew.marsh20@imperial.ac.uk">matthew.marsh20@imperial.ac.uk</a></li></ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list"></ul>
-      </div>
+    <div class="initial-content">
+      
 
 
-      </div>
+
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <style>
+.home-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+.home-intro img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+.home-intro h2 {
+  margin-bottom: 0.25rem;
+  font-size: 1.75rem;
+}
+.home-intro .subtitle {
+  color: #999;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.home-intro .bio {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.social-links a {
+  color: #999;
+  font-size: 1.5rem;
+  transition: color 0.2s;
+}
+.social-links a:hover {
+  color: #f2a900;
+}
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+.quick-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem 1rem;
+  border: 1px solid #333;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+.quick-link:hover {
+  border-color: #f2a900;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.quick-link .icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.quick-link .label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.quick-link .desc {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+</style>
+
+<div class="home-intro">
+  <img src="/assets/matthew-marsh.jpg" alt="Matthew Marsh">
+  <h2>Matthew Marsh</h2>
+  <p class="subtitle">Personal Website</p>
+  <p class="bio">
+    PhD student at <strong>Imperial College London</strong> researching Probabilistic Machine Learning
+    for Process Systems. I like applying maths and ML to real-world problems like sports analytics and finance.
+  </p>
+  <div class="social-links">
+    <a href="https://github.com/matthewmarsh11" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://twitter.com/matthew_marsh11" title="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://linkedin.com/in/matthew--marsh" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:matthew.marsh20@imperial.ac.uk" title="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+</div>
+
+<div class="quick-links">
+  <a href="/blog/" class="quick-link">
+    <span class="icon">&#128221;</span>
+    <span class="label">Blog</span>
+    <span class="desc">Thoughts & write-ups</span>
+  </a>
+  <a href="/projects/" class="quick-link">
+    <span class="icon">&#128736;</span>
+    <span class="label">Projects</span>
+    <span class="desc">Side projects</span>
+  </a>
+  <a href="/academic/" class="quick-link">
+    <span class="icon">&#128218;</span>
+    <span class="label">Academic</span>
+    <span class="desc">Research</span>
+  </a>
+  <a href="/cv/" class="quick-link">
+    <span class="icon">&#128196;</span>
+    <span class="label">CV</span>
+    <span class="desc">Experience</span>
+  </a>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+      </footer>
+
+      
+
+      
 
     </div>
 
-  </div>
+    
+  </article>
 
-</footer></body>
+  
+  
+</div>
 
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/matthewmarsh11" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://twitter.com/matthew_marsh11" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://linkedin.com/in/matthew--marsh" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+    
+
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="http://localhost:4000">Matthew Marsh</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+  </body>
 </html>

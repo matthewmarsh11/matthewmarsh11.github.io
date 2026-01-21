@@ -1,0 +1,52 @@
+<!-- Computer Modern (LaTeX) Font -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
+
+<style>
+  /* Override fonts with CMU Bright (LaTeX sans-serif) */
+  body,
+  .page__content,
+  .archive__item-excerpt,
+  .page__meta {
+    font-family: 'Computer Modern Bright', 'CMU Bright', 'Latin Modern Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .page__title,
+  .archive__item-title,
+  .site-title {
+    font-family: 'Computer Modern Bright', 'CMU Bright', 'Latin Modern Sans', 'Helvetica Neue', sans-serif !important;
+  }
+
+  code, pre, .highlight {
+    font-family: 'Computer Modern Typewriter', 'Courier New', monospace !important;
+  }
+
+  /* Better typography */
+  .page__content {
+    font-size: 1.05em;
+    line-height: 1.75;
+  }
+
+  /* Nicer blockquotes */
+  blockquote {
+    font-style: italic;
+    border-left: 4px solid #f2a900;
+  }
+
+  /* Rectangular avatar (not oval) */
+  .author__avatar img {
+    border-radius: 10px !important;
+  }
+</style>
+
+<!-- MathJax for equations -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>

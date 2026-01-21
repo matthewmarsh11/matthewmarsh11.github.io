@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: single
 title:  "Automating FPL with Machine Learning and MPC - Part 1: Machine Learning"
 date:   2025-08-21 12:00:00 +0000
-categories: blog
+categories: technical
 comments: true
 ---
 
