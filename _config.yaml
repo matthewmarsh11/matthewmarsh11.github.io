@@ -67,6 +67,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-include-cache
+  - jekyll-remote-theme
 
 # Archives
 category_archive:
