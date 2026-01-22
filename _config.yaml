@@ -50,7 +50,6 @@ include:
 
 # Build Settings
 markdown: kramdown
-remote_theme: # leave blank when using gem
 highlighter: rouge
 
 # Pagination
