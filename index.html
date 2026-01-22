@@ -121,3 +121,54 @@ classes: wide
     <span class="desc">Experience</span>
   </a>
 </div>
+
+<div class="recent-posts">
+  <h3>Recently Added</h3>
+  <ul>
+    {% for post in site.posts limit:3 %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      <span class="post-date">{{ post.date | date: "%b %Y" }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<style>
+.recent-posts {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.recent-posts h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+.recent-posts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.recent-posts li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #333;
+}
+.recent-posts li:last-child {
+  border-bottom: none;
+}
+.recent-posts a {
+  font-weight: 500;
+  color: #f2a900;
+  text-decoration: none;
+}
+.recent-posts a:hover {
+  text-decoration: underline;
+}
+.recent-posts .post-date {
+  display: block;
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+</style>
